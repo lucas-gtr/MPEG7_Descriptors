@@ -106,7 +106,7 @@ For query tasks, the toolkit utilizes a trained descriptor model to find similar
 
 ## Results
 
-To assess the performance of the descriptor models, we conducted experiments on two distinct datasets: a fruit dataset and a flower dataset. The results of these experiments are summarized in the following tables:
+To assess the performance of the descriptor models, we conducted experiments on two distinct datasets: a [fruit dataset](https://www.kaggle.com/datasets/utkarshsaxenadn/fruits-classification) and a [flower dataset](https://www.kaggle.com/datasets/alxmamaev/flowers-recognition). The results of these experiments are summarized in the following tables:
 
 ### Fruit Dataset Results
 
