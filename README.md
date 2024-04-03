@@ -8,9 +8,11 @@ This repository presents a toolkit for working with MPEG7 descriptors in image p
 - [Installation](#installation)
 - [Usage](#usage)
 - [Model](#model)
+- [Dataset](#dataset)
 - [Training](#training)
 - [Evaluation](#evaluation)
 - [Query](#query)
+- [Results](#results)
 
 ## Overview
 This project offers a set of scripts for working with MPEG7 descriptors, including training descriptor models on a dataset, evaluating their performance, and querying image with this dataset.
