@@ -95,7 +95,7 @@ During training, the toolkit computes descriptor vectors for images in the train
 ## Evaluation
 The toolkit evaluates the performance of a descriptor method on a test dataset by computing the mean average precision (mAP) of the predictions.
 
-![image](https://github.com/lucas-gtr/MPEG7_Descriptors/assets/12534925/acef4d8c-6623-48b8-bd49-5b14810bdb34)
+![image](https://github.com/lucas-gtr/MPEG7_Descriptors/assets/12534925/4917cb8a-749b-485f-95e3-aadc56a332b7)
 
 
 ## Query
