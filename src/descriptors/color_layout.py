@@ -2,17 +2,15 @@ import math
 
 import cv2
 import numpy as np
-from descriptors.descriptor import Descriptor
-
-from config import y_coeff_number, c_coeff_number, w_y, w_cb, w_cr
+from .descriptor import Descriptor
 
 
-def zigzag_scan(matrix, num_values):
+def zigzag_scan(matrix, num_values: int):
     """
     Performs a zigzag scan on a 2D matrix.
 
-    Parameters:
-        matrix (list of lists): The 2D matrix to be scanned.
+    Args:
+        matrix (np.ndarray): The 2D matrix to be scanned.
         num_values (int): The number of values to be scanned.
 
     Returns:
@@ -50,8 +48,15 @@ def zigzag_scan(matrix, num_values):
 
 
 class ColorLayoutDescriptor(Descriptor):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, y_coeff_number: int, c_coeff_number: int, w_y, w_cr, w_cb):
+        super().__init__("CLD")
+
+        self.y_coeff_number = y_coeff_number
+        self.c_coeff_number = c_coeff_number
+
+        self.w_y = w_y
+        self.w_cr = w_cr
+        self.w_cb = w_cb
 
     def get_descriptor(self, img):
         # Divide the image in 64 blocks (8x8)
@@ -87,9 +92,9 @@ class ColorLayoutDescriptor(Descriptor):
         dct_cb = cv2.dct(cb).astype(int)
 
         # Zigzag scanning to get coefficients
-        coeff_list = zigzag_scan(dct_y, y_coeff_number) + \
-                    zigzag_scan(dct_cr, c_coeff_number) + \
-                    zigzag_scan(dct_cb, c_coeff_number)
+        coeff_list = zigzag_scan(dct_y, self.y_coeff_number) + \
+                    zigzag_scan(dct_cr, self.c_coeff_number) + \
+                    zigzag_scan(dct_cb, self.c_coeff_number)
 
         str_coeff = [str(x) for x in coeff_list]
         descriptor = " ".join(str_coeff)
@@ -97,9 +102,11 @@ class ColorLayoutDescriptor(Descriptor):
         return descriptor
 
     def get_distance(self, d_1, d_2):
-        s_y = w_y * sum((d_1[i] - d_2[i]) ** 2 for i in range(y_coeff_number))
-        s_cr = w_cr * sum((d_1[i] - d_2[i]) ** 2 for i in range(y_coeff_number, y_coeff_number + c_coeff_number))
-        s_cb = w_cb * sum((d_1[i] - d_2[i]) ** 2 for i in range(y_coeff_number + c_coeff_number, len(d_1)))
+        s_y = self.w_y * sum((d_1[i] - d_2[i]) ** 2 for i in range(self.y_coeff_number))
+        s_cr = self.w_cr * sum((d_1[i] - d_2[i]) ** 2 for i in range(self.y_coeff_number,
+                                                                     self.y_coeff_number + self.c_coeff_number))
+        s_cb = self.w_cb * sum((d_1[i] - d_2[i]) ** 2 for i in range(self.y_coeff_number + self.c_coeff_number,
+                                                                     len(d_1)))
 
         D = math.sqrt(s_y) + math.sqrt(s_cr) + math.sqrt(s_cb)
 

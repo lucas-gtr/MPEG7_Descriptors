@@ -1,14 +1,14 @@
 import cv2
 import numpy as np
-from descriptors.descriptor import Descriptor
-from config import Td, alpha
-
-d_max = Td * alpha
+from .descriptor import Descriptor
 
 
 class DominantColorDescriptor(Descriptor):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, Td, alpha):
+        super().__init__("DCD")
+        self.Td = Td
+        self.alpha = alpha
+        self.d_max = Td * alpha
 
     def get_descriptor(self, img):
         # Prepare the image for K-means function
@@ -54,8 +54,8 @@ class DominantColorDescriptor(Descriptor):
             for j in range(N2):
                 color_distance = np.linalg.norm(d_1[1 + 4 * i:4 + 4 * i] - d_2[1 + 4 * j:4 + 4 * j])
                 a = 0
-                if color_distance <= Td:
-                    a = 1 - color_distance/d_max
+                if color_distance <= self.Td:
+                    a = 1 - color_distance/self.d_max
                 colors_similarity += a * F1[4 * i] * F2[4 * j]
 
         D -= colors_similarity
