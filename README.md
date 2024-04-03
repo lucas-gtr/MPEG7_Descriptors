@@ -7,7 +7,7 @@ This repository presents a toolkit for working with MPEG7 descriptors in image p
 - [Overview](#overview)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Model](#model)
+- [Descriptors](#descriptors)
 - [Dataset](#dataset)
 - [Training](#training-1)
 - [Evaluation](#evaluation-1)
@@ -56,7 +56,7 @@ python main.py query [query_image] [descriptor] [descriptor_database]
 * `descriptor`: Descriptor method to use. Choose from available options: CLD, DCD, or CSD.
 * `output_file`: Path to the descriptor database file.
 
-## Model
+## Descriptors
 The toolkit supports three MPEG7 descriptor methods:
 
 * **Color Layout Descriptor (CLD)**: Represents the spatial layout of colors in an image. It divides the image into a grid and computes color moments for each grid cell.
@@ -64,6 +64,8 @@ The toolkit supports three MPEG7 descriptor methods:
 * **Dominant Color Descriptor (DCD)**: Captures the dominant colors in an image. It quantizes the color space and computes the frequency of each color cluster.
 
 * **Color Structure Descriptor (CSD)**: Describes the spatial arrangement of color structures in an image. It analyzes the distribution of color pairs in predefined directions.
+
+Each descriptor has its own parameters. They can be modified in the [config.py] file
 
 ## Dataset
 
