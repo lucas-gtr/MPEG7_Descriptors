@@ -9,9 +9,9 @@ This repository presents a toolkit for working with MPEG7 descriptors in image p
 - [Usage](#usage)
 - [Model](#model)
 - [Dataset](#dataset)
-- [Training](#training)
-- [Evaluation](#evaluation)
-- [Query](#query)
+- [Training](#training-1)
+- [Evaluation](#evaluation-1)
+- [Query](#query-1)
 - [Results](#results)
 
 ## Overview
