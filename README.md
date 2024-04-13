@@ -47,7 +47,7 @@ python main.py eval [directory] [descriptor] [descriptor_database]
 * `output_file`: Path to the descriptor database file.
 
 ### Query
-To evaluate the performance of a descriptor model, execute the command:
+To query a descriptor model on a particular image, execute the command:
 ```bash
 python main.py query [query_image] [descriptor] [descriptor_database]
 ```
