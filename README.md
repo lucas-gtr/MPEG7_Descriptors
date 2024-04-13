@@ -9,9 +9,6 @@ This repository presents a toolkit for working with MPEG7 descriptors in image p
 - [Usage](#usage)
 - [Descriptors](#descriptors)
 - [Dataset](#dataset)
-- [Training](#training-1)
-- [Evaluation](#evaluation-1)
-- [Query](#query-1)
 - [Results](#results)
 
 ## Overview
@@ -36,6 +33,10 @@ python main.py train [directory] [descriptor] [output_file]
 * `descriptor`: Descriptor method to use. Choose from available options: CLD, DCD, or CSD.
 * `output_file`: Path to the output file to save the trained model.
 
+During training, the toolkit computes descriptor vectors for images in the training dataset using the specified method and saves the results to a text file.
+
+![image](https://github.com/lucas-gtr/MPEG7_Descriptors/assets/12534925/7b3815ba-0881-4ece-8fac-701dd6dd6486)
+
 ### Evaluation
 To evaluate the performance of a descriptor model, execute the command:
 ```bash
@@ -46,6 +47,10 @@ python main.py eval [directory] [descriptor] [descriptor_database]
 * `descriptor`: Descriptor method to use. Choose from available options: CLD, DCD, or CSD.
 * `output_file`: Path to the descriptor database file.
 
+The toolkit evaluates the performance of a descriptor method on a test dataset by computing the mean average precision (mAP) of the predictions.
+
+![image](https://github.com/lucas-gtr/MPEG7_Descriptors/assets/12534925/4917cb8a-749b-485f-95e3-aadc56a332b7)
+
 ### Query
 To query a descriptor model on a particular image, execute the command:
 ```bash
@@ -55,6 +60,10 @@ python main.py query [query_image] [descriptor] [descriptor_database]
 * `directory`: Path to the query image.
 * `descriptor`: Descriptor method to use. Choose from available options: CLD, DCD, or CSD.
 * `output_file`: Path to the descriptor database file.
+
+For query tasks, the toolkit utilizes a trained descriptor model to find similar images in the descriptor database based on a query image.
+
+![image](https://github.com/lucas-gtr/MPEG7_Descriptors/assets/12534925/90b4d1fe-fd0b-4124-9762-b23c5223fa7f)
 
 ## Descriptors
 The toolkit supports three MPEG7 descriptor methods:
@@ -88,23 +97,6 @@ dataset/
 ```
 
 The image name are not relevant. The image extension allower are `.jpg` `.jpeg` `.bmp` and `.png`
-## Training
-During training, the toolkit computes descriptor vectors for images in the training dataset using the specified method and saves the results to a text file.
-
-![image](https://github.com/lucas-gtr/MPEG7_Descriptors/assets/12534925/7b3815ba-0881-4ece-8fac-701dd6dd6486)
-
-
-## Evaluation
-The toolkit evaluates the performance of a descriptor method on a test dataset by computing the mean average precision (mAP) of the predictions.
-
-![image](https://github.com/lucas-gtr/MPEG7_Descriptors/assets/12534925/4917cb8a-749b-485f-95e3-aadc56a332b7)
-
-
-## Query
-For query tasks, the toolkit utilizes a trained descriptor model to find similar images in the descriptor database based on a query image.
-
-![image](https://github.com/lucas-gtr/MPEG7_Descriptors/assets/12534925/90b4d1fe-fd0b-4124-9762-b23c5223fa7f)
-
 
 ## Results
 
