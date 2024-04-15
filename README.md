@@ -74,7 +74,7 @@ The toolkit supports three MPEG7 descriptor methods:
 
 * **Color Structure Descriptor (CSD)**: Describes the spatial arrangement of color structures in an image. It analyzes the distribution of color pairs in predefined directions.
 
-Each descriptor has its own parameters. They can be modified in the [config.py] file
+Each descriptor has its own parameters. They can be modified in the [config file](config.py).
 
 ## Dataset
 
